@@ -3,23 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love You</title>
+    <title>Do You Love Me?</title>
     <style>
         body {
-            background-color: black;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
-            font-size: 2em;
             text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        #cat-image {
+            max-width: 300px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        #question {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        .buttons {
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .no {
+            background-color: #f44336;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div>I LOVE YOU SO MUCH JAJING</div>
+    <img id="cat-image" src="https://placekitten.com/300/300" alt="Cat Image">
+    <div id="question">Do you love me?</div>
+    <div class="buttons">
+        <button class="yes" onclick="nextQuestion()">Yes</button>
+        <button class="no" onclick="alert('Oh no! 😿')">No</button>
+    </div>
+
+    <script>
+        const questions = [
+            "Do you love me?",
+            "Are you sure?",
+            "Are you really sure?"
+        ];
+
+        const catImages = [
+            "https://placekitten.com/300/300", // Cute cat for "Do you love me?"
+            "https://placekitten.com/400/400", // Confident cat for "Are you sure?"
+            "https://placekitten.com/500/500"  // Funny cat for "Are you really sure?"
+        ];
+
+        let currentIndex = 0;
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < questions.length) {
+                document.getElementById("question").innerText = questions[currentIndex];
+                document.getElementById("cat-image").src = catImages[currentIndex];
+            } else {
+                document.getElementById("question").innerText = "I love you more! 😻";
+                document.querySelector(".buttons").style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
